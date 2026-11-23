@@ -1,0 +1,53 @@
+# Rio ROOT config -- used when you open Rio without a project (plain window).
+# Per-project windows override this via RIO_CONFIG_HOME (see zshrc-rio.sh).
+
+env-vars = ["RIO_WINDOW=1"]
+margin = [12, 20]
+enable-scroll-bar = true
+
+[window]
+width = 1200
+height = 800
+opacity = 0.3
+blur = true
+decorations = "Enabled"
+macos-use-unified-titlebar = true
+
+[renderer]
+performance = "High"
+backend = "Metal"
+
+[fonts]
+size = 15
+family = "JetBrainsMono Nerd Font"
+
+[fonts.regular]
+family = "JetBrainsMono Nerd Font"
+style = "Normal"
+weight = 400
+
+[fonts.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Normal"
+weight = 800
+
+[fonts.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+weight = 400
+
+[cursor]
+shape = "Block"
+blinking = true
+blinking-interval = 500
+
+[shell]
+program = "/bin/zsh"
+args = ["--login"]
+
+[navigation]
+mode = "NativeTab"
+use-current-path = true
+
+[colors]
+background = '#0f0d0e'

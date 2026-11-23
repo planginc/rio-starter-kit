@@ -1,0 +1,59 @@
+# Rio base config -- shared body for every project window.
+# The install script copies this into each project color folder and appends a
+# [colors] background line. Do NOT put a background color here; it belongs
+# per-project so each window gets its own tint.
+#
+# Tested against Rio 0.5.27 (Homebrew, September 2026) on macOS 26.6.2.
+# The kit depends on RIO_CONFIG_HOME and `margin`, both verified present in 0.5.27.
+
+# Marker env var so the shell can tell a Rio window apart from other terminals.
+env-vars = ["RIO_WINDOW=1"]
+
+# Window padding: [top/bottom, left/right].
+margin = [12, 20]
+
+enable-scroll-bar = true
+
+[window]
+width = 1200
+height = 800
+opacity = 0.3
+blur = true
+decorations = "Enabled"
+macos-use-unified-titlebar = true
+
+[renderer]
+performance = "High"
+backend = "Metal"
+
+[fonts]
+size = 15
+family = "JetBrainsMono Nerd Font"
+
+[fonts.regular]
+family = "JetBrainsMono Nerd Font"
+style = "Normal"
+weight = 400
+
+[fonts.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Normal"
+weight = 800
+
+[fonts.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+weight = 400
+
+[cursor]
+shape = "Block"
+blinking = true
+blinking-interval = 500
+
+[shell]
+program = "/bin/zsh"
+args = ["--login"]
+
+[navigation]
+mode = "NativeTab"
+use-current-path = true
