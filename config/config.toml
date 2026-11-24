@@ -8,8 +8,9 @@ enable-scroll-bar = true
 [window]
 width = 1200
 height = 800
-opacity = 0.3
-blur = true
+# Solid, not see-through: transparent windows are hard to read at work.
+opacity = 1.0
+blur = false
 decorations = "Enabled"
 macos-use-unified-titlebar = true
 
