@@ -64,7 +64,17 @@ _rio_open() {
     return 1
   fi
   if [[ -n "$title" ]]; then
-    (cd "$dir" && RIO_CONFIG_HOME="$RIO_CONF_ROOT/$conf" "$RIO_BIN" --title-placeholder "$title") &!
+    # Rio 0.5.30+ has --title, which pins the title so zsh and Claude Code can't
+    # replace it. Older Rio only has --title-placeholder (a starting title that
+    # the shell overwrites) and rejects --title outright, so check before using it.
+    if [[ -z "${_RIO_TITLE_FLAG:-}" ]]; then
+      if "$RIO_BIN" --help 2>/dev/null | grep -q -- '--title <'; then
+        _RIO_TITLE_FLAG="--title"
+      else
+        _RIO_TITLE_FLAG="--title-placeholder"
+      fi
+    fi
+    (cd "$dir" && RIO_CONFIG_HOME="$RIO_CONF_ROOT/$conf" "$RIO_BIN" "$_RIO_TITLE_FLAG" "$title") &!
   else
     (cd "$dir" && RIO_CONFIG_HOME="$RIO_CONF_ROOT/$conf" "$RIO_BIN") &!
   fi
